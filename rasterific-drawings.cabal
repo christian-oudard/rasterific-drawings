@@ -1,0 +1,54 @@
+name:                rasterific-drawings
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/christian-oudard/rasterific-drawings#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Christian Oudard
+maintainer:          christian.oudard@gmail.com
+copyright:           GPLv3
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Lib
+  build-depends:
+      base >= 4.7 && < 5
+  default-language:    Haskell2010
+
+executable rasterific-drawings-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , rasterific-drawings
+  default-language:    Haskell2010
+
+executable point-cloud
+  hs-source-dirs:      app
+  main-is:             PointCloud.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base
+    , rasterific-drawings
+    , mwc-random
+    , Rasterific >= 0.7.2.1 && < 0.8
+    , JuicyPixels >= 3.2.8.1 && < 3.3
+  default-language:    Haskell2010
+
+test-suite rasterific-drawings-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , rasterific-drawings
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/christian-oudard/rasterific-drawings
